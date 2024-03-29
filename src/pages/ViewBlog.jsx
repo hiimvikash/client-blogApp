@@ -13,7 +13,7 @@ function ViewBlog() {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        fetch(`http://localhost:4000/blog/${id}`).then((response)=>{
+        fetch(`https://api-blogapp.onrender.com/blog/${id}`).then((response)=>{
             response.json().then(res=>{
               setBlog(res.blog);
               setComments(res.comments);
@@ -23,7 +23,7 @@ function ViewBlog() {
 
         async function verifyUser() {
           try {
-            const response = await fetch('http://localhost:4000/user/verify', { credentials: 'include' });
+            const response = await fetch('https://api-blogapp.onrender.com/user/verify', { credentials: 'include' });
             const rd = await response.json();
             if (!response.ok) {
               setIsLoggedIn(false);
@@ -39,7 +39,7 @@ function ViewBlog() {
     }, [])
 
     function addcomment(){
-      fetch(`http://localhost:4000/blog/${blog._id}/addcomment`, {
+      fetch(`https://api-blogapp.onrender.com/blog/${blog._id}/addcomment`, {
         credentials:'include',
         method:"POST",
         body:JSON.stringify({content}),
@@ -48,7 +48,7 @@ function ViewBlog() {
     }
 
     function deleteblog(){
-      fetch(`http://localhost:4000/blog/delete/${blog._id}`, {
+      fetch(`https://api-blogapp.onrender.com/blog/delete/${blog._id}`, {
         credentials: 'include'
       }).then(response=>response.json().then((rd)=>{
         console.log(rd.message);
@@ -67,7 +67,7 @@ function ViewBlog() {
       <time>{formatISO9075(new Date(blog.createdAt))}</time>
       <div className="author">by @{blog.createdBy.username}</div>
       <div className="image">
-        <img src={`http://localhost:4000${blog.coverImageURL}`} alt=""/>
+        <img src={`https://api-blogapp.onrender.com${blog.coverImageURL}`} alt=""/>
       </div>
       <div className="content" dangerouslySetInnerHTML={{__html:blog.content}} />
       {isLoggedIn ? (

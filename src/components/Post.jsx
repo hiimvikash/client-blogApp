@@ -6,7 +6,7 @@ function Post({_id,title,summary,coverImageURL,content,createdAt,createdBy}) {
     <div className="post">
         <div className="image">
         <Link to={`/blog/${_id}`}>
-          <img src={`http://localhost:4000${coverImageURL}`} alt="postImage" />
+          <img src={`https://api-blogapp.onrender.com${coverImageURL}`} alt="postImage" />
         </Link>
         </div>
         <div className="text">

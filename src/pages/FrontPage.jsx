@@ -7,7 +7,7 @@ function FrontPage() {
   const {userInfo} = useUserInfo();
 
   useEffect(() => {
-    fetch("http://localhost:4000/blog", {credentials : "include"}).then((response) => {
+    fetch("https://api-blogapp.onrender.com/blog", {credentials : "include"}).then((response) => {
       response.json().then((belogs) => {
         setBlogs(belogs);
       });

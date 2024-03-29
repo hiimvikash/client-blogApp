@@ -7,7 +7,7 @@ function AllBlogPage() {
   const {userInfo} = useUserInfo();
 
   useEffect(() => {
-    fetch("http://localhost:4000/blog").then((response) => {
+    fetch("https://api-blogapp.onrender.com/blog").then((response) => {
       response.json().then((belogs) => {
         setBlogs(belogs);
       });

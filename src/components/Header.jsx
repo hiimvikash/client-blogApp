@@ -10,7 +10,7 @@ function Header() {
   useEffect(() => {
     async function verifyUser() {
       try {
-        const response = await fetch('http://localhost:4000/user/verify', { credentials: 'include' });
+        const response = await fetch('https://api-blogapp.onrender.com/user/verify', { credentials: 'include' });
         const rd = await response.json();
         if (!response.ok) {
           console.log(rd.message);
@@ -28,7 +28,7 @@ function Header() {
 
   
   async function logout(){
-    await fetch('http://localhost:4000/user/logout', {credentials: 'include'});
+    await fetch('https://api-blogapp.onrender.com/user/logout', {credentials: 'include'});
     setUserInfo({});
     setIsLoggedIn(false);
     navigate('/');

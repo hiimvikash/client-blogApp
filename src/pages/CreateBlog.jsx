@@ -65,9 +65,8 @@ useEffect(()=>{
 
     const response = await fetch('https://api-blogapp.onrender.com/blog/addblog', {
       method : 'POST',
+      credentials: 'include',
       body : data,
-      mode:'no-cors',
-      credentials : 'include'
     })
     const rd = await response.json();
     if(response.ok){

@@ -43,7 +43,7 @@ useEffect(()=>{
     }
   }
     verifyUser();
-  }, []);
+}, []);
   
   const [title,setTitle] = useState('');
   const [summary,setSummary] = useState('');
@@ -65,8 +65,7 @@ useEffect(()=>{
 
     const response = await fetch('https://api-blogapp.onrender.com/blog/addblog', {
       method : 'POST',
-      body : data,
-      credentials : 'include',
+      body : data
     })
     const rd = await response.json();
     if(response.ok){

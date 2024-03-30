@@ -13,30 +13,20 @@ function ViewBlog() {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        fetch(`https://api-blogapp.onrender.com/blog/${id}`).then((response)=>{
-            response.json().then(res=>{
-              setBlog(res.blog);
-              setComments(res.comments);
-            })
-    }, [])
+      fetch(`https://api-blogapp.onrender.com/blog/${id}`, { credentials: 'include' }).then((response)=>{
+          response.json().then(res=>{
+            setBlog(res.blog);
+            setComments(res.comments);
 
-
-        async function verifyUser() {
-          try {
-            const response = await fetch('https://api-blogapp.onrender.com/user/verify', { credentials: 'include' });
-            const rd = await response.json();
-            if (!response.ok) {
-              setIsLoggedIn(false);
-            } else {
+            if(res.info!==null){
               setIsLoggedIn(true);
-              setUserInfo(rd.info);
+              setUserInfo(res.info);
+            }else {
+              setIsLoggedIn(false);
             }
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
-        }
-          verifyUser();
-    }, [])
+          })
+      })
+  }, [])
 
     function addcomment(){
       fetch(`https://api-blogapp.onrender.com/blog/${blog._id}/addcomment`, {

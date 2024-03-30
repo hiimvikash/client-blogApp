@@ -18,31 +18,14 @@ function Login() {
       body : JSON.stringify({username, password}),
       credentials: 'include'
     })
-    
-    console.log(response)
+    const rd = await response.json();
     if(!response.ok){
-      let rd = await response.json();
       setMessage(rd.message);
     }else{
       console.log("I will navigate")
+      setUserInfo(rd.info);
       setIsLoggedIn(true);
-      verifyUser();
       setRedirect(true);
-    }
-  }
-
-  async function verifyUser() {
-    try {
-      const response = await fetch('https://api-blogapp.onrender.com/user/verify', { credentials: 'include' });
-      const rd = await response.json();
-      if (!response.ok) {
-        console.log(rd.message);
-      } else {
-        console.log(rd.message);
-        setUserInfo(rd.info);
-      }
-    } catch (error) {
-      console.error('Error fetching data:', error);
     }
   }
   

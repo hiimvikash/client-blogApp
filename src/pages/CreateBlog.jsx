@@ -67,7 +67,6 @@ useEffect(()=>{
       method : 'POST',
       body : data,
       credentials : 'include',
-      mode : 'cors'
     })
     const rd = await response.json();
     if(response.ok){

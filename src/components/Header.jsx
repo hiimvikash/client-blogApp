@@ -27,9 +27,10 @@ function Header() {
   }, []);
 
   
-  async function logout(){
-    await fetch('https://api-blogapp.onrender.com/user/logout', {credentials: 'include'});
+  function logout(){
+    // await fetch('https://api-blogapp.onrender.com/user/logout', {credentials: 'include'});
     setUserInfo({});
+    Cookies.remove('token');
     setIsLoggedIn(false);
     navigate('/');
   }

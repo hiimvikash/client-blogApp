@@ -1,7 +1,7 @@
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import { useUserInfo } from "../context/UserContext"
 import { useEffect, useState } from "react";
-
+import Cookies from "js-cookie";
 
 function Header() {
   const{userInfo, setUserInfo, setIsLoggedIn} = useUserInfo();

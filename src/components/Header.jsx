@@ -38,7 +38,7 @@ function Header() {
   const username = userInfo?.username;
   return (
     <header>
-        <Link to="/allblogs" className="logo">Blogify</Link>
+        <Link to="/allblogs" className="logo">Blogefy</Link>
         <nav>
           {username && (
           <>

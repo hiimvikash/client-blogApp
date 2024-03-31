@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {Navigate} from "react-router-dom";
 import { useUserInfo } from '../context/UserContext';
-
+import Cookies from 'js-cookie';
 function Login() {
 
   const [username, setUsername] = useState("");
@@ -23,6 +23,7 @@ function Login() {
       setMessage(rd.message);
     }else{
       console.log("I will navigate")
+      Cookies.set("token", rd.token);
       setUserInfo(rd.info);
       setIsLoggedIn(true);
       setRedirect(true);

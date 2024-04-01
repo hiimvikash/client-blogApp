@@ -23,7 +23,7 @@ function Login() {
       setMessage(rd.message);
     }else{
       console.log("I will navigate")
-      Cookies.set("token", rd.token);
+      Cookies.set("token", rd.token, { sameSite: 'None', secure: true });
       setUserInfo(rd.info);
       setIsLoggedIn(true);
       setRedirect(true);
